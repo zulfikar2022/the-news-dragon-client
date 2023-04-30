@@ -8,10 +8,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import LeftNav from '../pages/Shared/LeftNav/LeftNav';
 import RightNav from '../pages/Shared/RightNav/RightNav';
+import { Outlet } from 'react-router-dom';
 
 const Main = () => {
     return (
-        <div>
+        <div className='mt-3'>
             <Header></Header>
                 <Container >
                     <Row>
@@ -19,7 +20,7 @@ const Main = () => {
                             <LeftNav></LeftNav>
                         </Col>
                         <Col lg={6} className='mt-4'>
-                            <h2>Main content coming...</h2>
+                            <Outlet></Outlet>
                         </Col>
                         <Col lg={3} sm={12}>
                             <RightNav></RightNav>
