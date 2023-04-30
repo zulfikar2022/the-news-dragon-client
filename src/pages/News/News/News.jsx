@@ -24,7 +24,7 @@ const News = () => {
               <p className="text-muted">{newsDetails?.details}</p>
               <Link to={`/categories/${newsDetails?.category_id}`}>
                 <Button variant={"danger"}>
-                  {" "}
+                
                   <FaLongArrowAltLeft /> <span>All News in This Category</span>
                 </Button>
               </Link>

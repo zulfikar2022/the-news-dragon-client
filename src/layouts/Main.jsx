@@ -9,11 +9,13 @@ import Col from 'react-bootstrap/Col';
 import LeftNav from '../pages/Shared/LeftNav/LeftNav';
 import RightNav from '../pages/Shared/RightNav/RightNav';
 import { Outlet } from 'react-router-dom';
+import NavigationBar from '../pages/Shared/NavigationBar/NavigationBar';
 
 const Main = () => {
     return (
         <div className='mt-3'>
             <Header></Header>
+            <NavigationBar></NavigationBar>
                 <Container >
                     <Row>
                         <Col lg={3}>
