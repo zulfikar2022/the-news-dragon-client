@@ -8,7 +8,7 @@ const auth = getAuth(app);
 
 // eslint-disable-next-line react/prop-types
 const AuthProviders = ({ children }) => {
-  const user = { displayName: "Muri Khan" };
+  const user = null;
   const authInfo = { user };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
