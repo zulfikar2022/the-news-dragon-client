@@ -1,0 +1,16 @@
+
+.text-container{
+    margin-top: 10px;
+    background: url('../../../assets/bg.png');
+    width: auto;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+.text-big{
+    font-size: 45px;
+    
+}
+.text-small{
+
+}
