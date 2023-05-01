@@ -3,13 +3,18 @@ import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
+import { updateProfile } from "firebase/auth";
 //controlId="formBasicEmail"
 const Register = () => {
 
     const {createUser} = useContext(AuthContext);
     const [errorMessage,setErrorMessage] = useState('');
+    const [successMessage,setSuccessMessage] = useState('');
+    const [accepted,setAccepted] = useState(false);
+
     const handleRegister = (event) => {
         setErrorMessage('');
+        setSuccessMessage('');
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
@@ -23,6 +28,10 @@ const Register = () => {
                 const createdUser = result.user;
                 console.log(createdUser);
                 form.reset();
+                setSuccessMessage("Successfully created account on firebase");
+                updateProfile(createUser,{displayName:name})
+                    .then(console.log(createdUser))
+                    .catch(error => {console.log(error)})
             })
             .catch(error => {
                 console.log(error);
@@ -30,6 +39,9 @@ const Register = () => {
             })
 
 
+    }
+    const handleAccepted = (event) => {
+        setAccepted(event.target.checked);
     }
 
   return (
@@ -74,9 +86,16 @@ const Register = () => {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" name="accept" label="Accepts terms and conditions" />
+          <Form.Check 
+          onClick={handleAccepted}
+          type="checkbox"
+           name="accept" 
+          label={<>Accepts <Link to={'/terms'}>Terms and Conditions</Link></>} />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Form.Text className="text-primary">
+            {successMessage && <p>{successMessage}</p>}
+        </Form.Text>
+        <Button variant="primary" disabled={!accepted} type="submit">
           Register
         </Button>
         <br />

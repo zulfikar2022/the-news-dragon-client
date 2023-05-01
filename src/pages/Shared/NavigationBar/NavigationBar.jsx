@@ -4,9 +4,15 @@ import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProviders';
+import './NavigationBar.css'
 
 const NavigationBar = () => {
-    const { user } = useContext(AuthContext);
+    const { user,logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+      logOut()
+        
+    }
+
     return (
         <Container>
               <Navbar
@@ -19,10 +25,10 @@ const NavigationBar = () => {
         <Container>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto ms-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/">About</Nav.Link>
-              <Nav.Link href="/">Career</Nav.Link>
+            <Nav className="me-auto ms-auto navigation-link">
+              <Link to={'/'}>Home</Link>
+              <Link to={'/'}>About</Link>
+              <Link to={'/'}>Career</Link>
             </Nav>
             <Nav className="align-items-center">
               {user && (
@@ -31,7 +37,7 @@ const NavigationBar = () => {
                 </Nav.Link>
               )}
                 {user ? (
-                  <Button variant="secondary">Logout</Button>
+                  <Button onClick={handleLogOut} variant="secondary">Logout</Button>
                 ) : (
                   <Link to={'/login'}>
                     <Button variant="secondary">Login</Button>

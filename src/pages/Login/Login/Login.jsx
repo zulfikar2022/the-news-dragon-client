@@ -1,13 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
 import { Button, Container,Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 // import { Form } from "react-router-dom";
 
 const Login = () => {
     const {signIn} = useContext(AuthContext);
     const [errorMessage,setErrorMessage] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log('login page location ',location);
+    const from = location.state?.from?.pathname || '/categories/0' ;
 
     const handleSignIn = (event) => {
         setErrorMessage('');
@@ -22,6 +26,7 @@ const Login = () => {
                 console.log(loggedUser);
                 setErrorMessage('');
                 form.reset();
+                navigate(from,{replace:true})
             })
             .catch(error =>{
                 console.log(error.message);
