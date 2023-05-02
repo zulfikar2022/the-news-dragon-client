@@ -43,7 +43,7 @@ import Terms from "../pages/Shared/Terms/Terms";
             {
                 path:':id',
                 element:<Category></Category>,
-                loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
+                loader: ({params}) => fetch(`https://the-news-dragon-server-zulfikar2022.vercel.app/categories/${params.id}`)
             },
         ]
     },
@@ -54,7 +54,7 @@ import Terms from "../pages/Shared/Terms/Terms";
             {
                 path:'/news/:id',
                 element:<PrivateRoute><News></News></PrivateRoute>,
-                loader:({params}) => fetch(`http://localhost:5000/news/${params.id}`)
+                loader:({params}) => fetch(`https://the-news-dragon-server-zulfikar2022.vercel.app/news/${params.id}`)
             }
         ]
     }

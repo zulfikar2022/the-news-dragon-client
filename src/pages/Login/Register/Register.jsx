@@ -85,6 +85,7 @@ const Register = () => {
             placeholder="Password"
           />
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check 
           onClick={handleAccepted}
@@ -92,6 +93,7 @@ const Register = () => {
            name="accept" 
           label={<>Accepts <Link to={'/terms'}>Terms and Conditions</Link></>} />
         </Form.Group>
+        
         <Form.Text className="text-primary">
             {successMessage && <p>{successMessage}</p>}
         </Form.Text>
