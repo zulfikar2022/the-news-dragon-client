@@ -4,10 +4,12 @@ import { Button, Card } from "react-bootstrap";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 import EditorsInside from "../EditorsInside/EditorsInside";
+import useTitle from "../../../hooks/useTitle";
 
 const News = () => {
   const newsDetails = useLoaderData();
   console.log(newsDetails);
+  useTitle('News Details')
   return (
     <div>
       <h2>Dragon news</h2>

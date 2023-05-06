@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { Button, Container,Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
+import useTitle from "../../../hooks/useTitle";
 // import { Form } from "react-router-dom";
 
 const Login = () => {
@@ -12,6 +13,7 @@ const Login = () => {
     const location = useLocation();
     console.log('login page location ',location);
     const from = location.state?.from?.pathname || '/categories/0' ;
+    useTitle("Login")
 
     const handleSignIn = (event) => {
         setErrorMessage('');

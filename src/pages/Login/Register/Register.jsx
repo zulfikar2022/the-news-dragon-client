@@ -4,6 +4,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import { updateProfile } from "firebase/auth";
+import useTitle from "../../../hooks/useTitle";
 //controlId="formBasicEmail"
 const Register = () => {
 
@@ -11,6 +12,7 @@ const Register = () => {
     const [errorMessage,setErrorMessage] = useState('');
     const [successMessage,setSuccessMessage] = useState('');
     const [accepted,setAccepted] = useState(false);
+    useTitle("Register")
 
     const handleRegister = (event) => {
         setErrorMessage('');
